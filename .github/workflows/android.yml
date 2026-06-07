@@ -1,7 +1,7 @@
 name: Build Accord APK
 
 on:
-  workflow_dispatch: # This adds the manual "Run workflow" button!
+  workflow_dispatch:
 
 jobs:
   build:
@@ -10,6 +10,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+      with:
+        submodules: recursive # <--- THIS IS THE MAGIC LINE FIX
 
     - name: Set up JDK 17
       uses: actions/setup-java@v4
